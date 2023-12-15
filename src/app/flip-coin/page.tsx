@@ -26,7 +26,7 @@ export default function FlipCoin() {
           isError ? (
             <Error
               message={'Please login first to access this page'}
-              route={'/'}
+              route={'/?logout=true'}
               icon={'svgs/stop.svg'}
             />
           ) : (

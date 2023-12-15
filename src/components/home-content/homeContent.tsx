@@ -14,6 +14,7 @@ const HomeContent:FC = () => {
   const searchParams = useSearchParams();
   const { isLoggedin, setIsLoggedIn } = useGlobalContext();
   const search = searchParams.get('ref');
+  
   const router = useRouter();
 
   const {data, isLoading, isRefetching} = useQuery({
@@ -23,8 +24,12 @@ const HomeContent:FC = () => {
 
 
   useEffect(() => {
-		setIsLoggedIn(true);
-    router.push('/flip-coin');
+    if (!isLoggedin && !searchParams.get("logout")){
+      setIsLoggedIn(true);
+      router.push('/flip-coin');
+    }else{
+      setIsLoggedIn(false);
+    }
     console.log("component mounted", search);
   }, [])
 
